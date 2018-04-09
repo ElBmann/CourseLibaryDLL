@@ -27,12 +27,12 @@ namespace CollegeCourseLibrary1
    public class DataLayer
     {
         #region private memeber variable
-        
-        CourseCollection cc = new CourseCollection();
-        CourseMeeting cm1 = new CourseMeeting();
-        ProfessorCollection pc = new ProfessorCollection();
-        RoomCollection rc = new RoomCollection();
-        CourseMeetingCollection cmc = new CourseMeetingCollection();
+
+        CourseCollection cc;
+        CourseMeeting cm1;
+        ProfessorCollection pc;
+        RoomCollection rc;
+        CourseMeetingCollection cmc;
         #endregion
 
         #region CallEvents
@@ -43,8 +43,8 @@ namespace CollegeCourseLibrary1
         //*****************************************************
         public class CC_CallEventArgs: EventArgs {
 
-            private CourseCollection courses;
-            public CourseCollection Courses
+            private Course courses;
+            public Course Courses
             {
                 get
                 {
@@ -57,9 +57,9 @@ namespace CollegeCourseLibrary1
                 }
             }
           
-            public CC_CallEventArgs(CourseCollection cc)
+            public CC_CallEventArgs(Course c)
             {
-                Courses = cc;
+                Courses = c;
             }
 
         }//end event Args
@@ -73,7 +73,9 @@ namespace CollegeCourseLibrary1
             {
                 return;
             }
+
             DataLayer.CC_CallEventArgs CCEvtArgs = new DataLayer.CC_CallEventArgs(cc);
+
             CallEvent(this, CCEvtArgs);
         }// End FireCall Event
 
@@ -163,14 +165,15 @@ namespace CollegeCourseLibrary1
            
 
 
-        //This class Fires the the call event
+        
         public bool AddCourse(Course c)
         {
-
+            //add course fire event in here
             try
             {
 
                 cc.CList.Add(c);
+               // FireCallEvent(c);
 
 
                 return true;
@@ -314,6 +317,11 @@ namespace CollegeCourseLibrary1
            
             CC_reader.Close();
         }// End Initialize
+
+        public override string ToString()
+        {
+            return cc.ToString() + pc.ToString();
+        }
 
         #endregion
     }
