@@ -169,12 +169,14 @@ namespace CollegeCourseLibrary1
         
         public bool AddCourse(Course c)
         {
+            FireCallEvent(c);
             //add course fire event in here
             try
             {
                 
                 cc.CList.Add(c);
                 
+
                 
 
                 return true;
