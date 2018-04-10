@@ -41,7 +41,7 @@ namespace CollegeCourseLibrary1
         // Event argument class.
         //
         //*****************************************************
-        public class CC_CallEventArgs: EventArgs {
+        public class C_CallEventArgs: EventArgs {
 
             private Course courses;
             public Course Courses
@@ -57,26 +57,27 @@ namespace CollegeCourseLibrary1
                 }
             }
           
-            public CC_CallEventArgs(Course c)
+            public C_CallEventArgs(Course c)
             {
                 Courses = c;
+                
             }
 
         }//end event Args
 
         //Declare the call event
-        public event EventHandler<CC_CallEventArgs> CallEvent;
+        public event EventHandler<C_CallEventArgs> CallEvent;
 
-        public void FireCallEvent(CourseCollection cc)
+        public void FireCallEvent(Course c)
         {
             if(CallEvent == null)
             {
                 return;
             }
 
-            DataLayer.CC_CallEventArgs CCEvtArgs = new DataLayer.CC_CallEventArgs(cc);
+            DataLayer.C_CallEventArgs CEvtArgs = new DataLayer.C_CallEventArgs(c);
 
-            CallEvent(this, CCEvtArgs);
+            CallEvent(this, CEvtArgs);
         }// End FireCall Event
 
 
@@ -171,10 +172,10 @@ namespace CollegeCourseLibrary1
             //add course fire event in here
             try
             {
-
+                
                 cc.CList.Add(c);
-               // FireCallEvent(c);
-
+                
+                
 
                 return true;
             }
@@ -318,10 +319,12 @@ namespace CollegeCourseLibrary1
             CC_reader.Close();
         }// End Initialize
 
+
+
         public override string ToString()
         {
             return cc.ToString() + pc.ToString();
-        }
+        }// end To String
 
         #endregion
     }
