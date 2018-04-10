@@ -323,7 +323,23 @@ namespace CollegeCourseLibrary1
 
         public override string ToString()
         {
-            return cc.ToString() + pc.ToString();
+            string Id = "";
+            string Desi = "";
+            string Num = "";
+            string Des = "";
+            string Title = "";
+            string Credits = "";
+
+            foreach (var courseList in cc.CList)
+            {
+                Id = courseList.Id.ToString();
+                Desi = courseList.Designator.ToString();
+                Num = courseList.Number.ToString();
+                Des = courseList.Designator.ToString();
+                Title = courseList.Title.ToString();
+                Credits = courseList.Credits.ToString();
+            }
+            return Id + ", " + Desi + ", " + Num + ", " + Des + ", " + Title + ", "+ Credits;
         }// end To String
 
         #endregion
