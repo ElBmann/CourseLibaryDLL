@@ -33,6 +33,7 @@ namespace CollegeCourseLibrary1
         ProfessorCollection pc;
         RoomCollection rc;
         CourseMeetingCollection cmc;
+        Course cou = new Course();
         #endregion
 
         #region CallEvents
@@ -63,7 +64,7 @@ namespace CollegeCourseLibrary1
                 
             }
 
-        }//end event Args
+        }//end event Args.
 
         //Declare the call event
         public event EventHandler<C_CallEventArgs> CallEvent;
@@ -331,7 +332,7 @@ namespace CollegeCourseLibrary1
             string Des = "";
             string Title = "";
             string Credits = "";
-
+           
             foreach (var courseList in cc.CList)
             {
                 Id = courseList.Id.ToString();
@@ -340,8 +341,18 @@ namespace CollegeCourseLibrary1
                 Des = courseList.Designator.ToString();
                 Title = courseList.Title.ToString();
                 Credits = courseList.Credits.ToString();
+
+                
             }
-            return Id + ", " + Desi + ", " + Num + ", " + Des + ", " + Title + ", "+ Credits;
+
+
+            return Id + Desi + Num + Des + Title + Credits;
+
+
+
+
+
+
         }// end To String
 
         #endregion
